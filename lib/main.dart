@@ -1,4 +1,7 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:flutter/material.dart';
+import 'package:my_kantin/forgotpassword.dart';
 import 'package:my_kantin/splashscreen.dart';
 
 void main() {
@@ -16,6 +19,7 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: SplashScreenView()
     );
   }
