@@ -5,6 +5,7 @@ import 'package:flutter/src/widgets/framework.dart';
 
 import 'package:flutter/src/foundation/key.dart';
 import 'package:my_kantin/dashboard.dart';
+import 'package:my_kantin/forgotpassword.dart';
 
 import '';
 
@@ -18,6 +19,7 @@ class Login extends StatelessWidget {
     bool _obscureText= true;
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Colors.teal,
         title: Text('Login Screen'),
       ),
       body: Column(
@@ -77,6 +79,8 @@ class Login extends StatelessWidget {
                       },
                     ),
                   ),
+              
+                 
                   SizedBox(
                     height: 30,
                   ),
@@ -98,6 +102,15 @@ class Login extends StatelessWidget {
                       color: Colors.teal,
                       textColor: Colors.white,
                     ),
+                  ),
+                    SizedBox(height: 20,),
+                  InkWell(
+                    onTap: (){
+                      Navigator.push(context,
+                      MaterialPageRoute(
+                        builder:(context)=> const ForgotPassword() ));
+                    },
+                    child: Text('Forgot Password?'),
                   )
                 ],
               ),
