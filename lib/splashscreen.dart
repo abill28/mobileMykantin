@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors, library_private_types_in_public_api
+// ignore_for_file: prefer_const_constructors, library_private_types_in_public_api, annotate_overrides
 
 import 'dart:async';
 
@@ -32,8 +32,11 @@ class _SplashScreenView extends State<SplashScreenView> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
+          // ignore: prefer_const_literals_to_create_immutables
           children: [
-            // Image.asset("assets/dd.png"),
+            Icon(
+              Icons.restaurant_menu
+            ),
             SizedBox(height: 24.0),
             Text(
               "My Kantin",

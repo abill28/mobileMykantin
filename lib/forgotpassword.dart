@@ -42,9 +42,9 @@ class ForgotPassword extends StatelessWidget {
                       child: TextFormField(
                         keyboardType: TextInputType.emailAddress,
                         decoration: InputDecoration(
-                          labelText: 'New Password',
+                          labelText: 'new password',
                           hintText: 'enter new password',
-                          prefixIcon: Icon(Icons.email),
+                          prefixIcon: Icon(Icons.password_outlined),
                           border: OutlineInputBorder(),
                         ),
                         onChanged: (String value) {},
