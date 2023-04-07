@@ -1,26 +1,45 @@
-// ignore_for_file: prefer_const_constructors, no_leading_underscores_for_local_identifiers
+// ignore_for_file: prefer_const_constructors, no_leading_underscores_for_local_identifiers, use_key_in_widget_constructors
 
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-
-import 'package:flutter/src/foundation/key.dart';
+import 'package:my_kantin/controller/loginController.dart';
 import 'package:my_kantin/dashboard.dart';
 import 'package:my_kantin/forgotpassword.dart';
 
-import '';
+class Login extends StatefulWidget {
+  @override
+  State<Login> createState() => _LoginState();
+}
 
-class Login extends StatelessWidget {
-  const Login({Key? key}) : super(key: key);
-  
+class _LoginState extends State<Login> { 
+  TextEditingController namaController = TextEditingController();
+  TextEditingController pwController = TextEditingController();
+
+
+  void proceslogin(context){
+    var data = LoginController().login(namaController.text, pwController.text).then((value) {
+      if (value) {
+        Navigator.pushReplacement(context, MaterialPageRoute(builder: (BuildContext context) => Dashboard()));
+      } else {
+        showDialog(context: context, builder: ((BuildContext context){
+          return AlertDialog(
+            title: Text('login gagal'),
+            content: Text('periksa kembali username dan passoword anda'),
+            actions: [
+              ElevatedButton(onPressed: () => Navigator.pop(context), child: Text("ok"))
+            ],
+          );
+        }));
+      }
+    });
+  }
 
   @override
-  
   Widget build(BuildContext context) {
     bool _obscureText= true;
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.teal,
-        title: Text('Login Screen'),
+        title: Text('myKantin'),
       ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -45,11 +64,12 @@ class Login extends StatelessWidget {
                   Padding(
                     padding: EdgeInsets.symmetric(horizontal: 15),
                     child: TextFormField(
+                      controller: namaController,
                       keyboardType: TextInputType.emailAddress,
                       decoration: InputDecoration(
-                        labelText: 'Email',
-                        hintText: 'enter email',
-                        prefixIcon: Icon(Icons.email),
+                        labelText: 'username',
+                        hintText: 'enter username',
+                        prefixIcon: Icon(Icons.people_alt),
                         border: OutlineInputBorder(),
                       ),
                       onChanged: (String value) {},
@@ -64,9 +84,9 @@ class Login extends StatelessWidget {
                   Padding(
                     padding: EdgeInsets.symmetric(horizontal: 15),
                     child: TextFormField(
+                      controller: pwController,
                       obscureText: _obscureText,
                       decoration: InputDecoration(
-                        
                         labelText: 'Password',
                         hintText: 'enter password',
                         filled: false,
@@ -74,6 +94,9 @@ class Login extends StatelessWidget {
                         border: OutlineInputBorder(),
                       ),
                       onChanged: (String value) {},
+                      onFieldSubmitted: (text){
+                        proceslogin(context);
+                      },
                       validator: (value) {
                         return value!.isEmpty ? 'Please enter password' : null;
                       },
@@ -90,11 +113,7 @@ class Login extends StatelessWidget {
                       minWidth: double.infinity,
                       // Within the `FirstRoute` widget
                       onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => const Dashboard()),
-                        );
+                        proceslogin(context);
                       },
               
                       // ignore: sort_child_properties_last

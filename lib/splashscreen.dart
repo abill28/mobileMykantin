@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors, library_private_types_in_public_api, annotate_overrides
+// ignore_for_file: prefer_const_constructors, library_private_types_in_public_api, annotate_overrides, use_key_in_widget_constructors, avoid_unnecessary_containers
 
 import 'dart:async';
 
@@ -27,26 +27,10 @@ class _SplashScreenView extends State<SplashScreenView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.teal,
       body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          // ignore: prefer_const_literals_to_create_immutables
-          children: [
-            Icon(
-              Icons.restaurant_menu
-            ),
-            SizedBox(height: 24.0),
-            Text(
-              "My Kantin",
-              style: TextStyle(
-                  fontSize: 30,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.white),
-            ),
-          ],
-        ),
+      child: 
+      Container(child:
+      Image.asset("assets/images/mykantin.jpg")),
       ),
     );
   }
