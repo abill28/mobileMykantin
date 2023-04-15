@@ -9,7 +9,7 @@ class Dashboard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.teal,
+        backgroundColor: Colors.black,
         title: Text('Dashboard'),
       ),
       body: Column(

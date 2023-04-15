@@ -38,7 +38,7 @@ class _LoginState extends State<Login> {
     bool _obscureText= true;
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.teal,
+        backgroundColor: Colors.black,
         title: Text('myKantin'),
       ),
       body: Column(
@@ -49,7 +49,7 @@ class _LoginState extends State<Login> {
             'Login',
             style: TextStyle(
               fontSize: 35,
-              color: Colors.teal,
+              color: Colors.black,
               fontWeight: FontWeight.bold,
             ),
           ),
@@ -118,7 +118,7 @@ class _LoginState extends State<Login> {
               
                       // ignore: sort_child_properties_last
                       child: Text('Login'),
-                      color: Colors.teal,
+                      color: Colors.black,
                       textColor: Colors.white,
                     ),
                   ),
