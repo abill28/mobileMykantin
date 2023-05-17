@@ -1,8 +1,10 @@
 // ignore_for_file: prefer_const_constructors, unused_import
 
 import 'package:flutter/material.dart';
+import 'package:my_kantin/buttonN.dart';
 import 'package:my_kantin/forgotpassword.dart';
 import 'package:my_kantin/splashscreen.dart';
+import 'package:my_kantin/transaksiH.dart';
 
 void main() {
   runApp(const MyApp());
@@ -20,7 +22,7 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: SplashScreenView()
+      home: HalPage(hal: 1,)
     );
   }
 }

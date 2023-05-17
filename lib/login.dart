@@ -1,9 +1,12 @@
 // ignore_for_file: prefer_const_constructors, no_leading_underscores_for_local_identifiers, use_key_in_widget_constructors
 
 import 'package:flutter/material.dart';
+import 'package:my_kantin/buttonN.dart';
 import 'package:my_kantin/controller/loginController.dart';
 import 'package:my_kantin/dashboard.dart';
 import 'package:my_kantin/forgotpassword.dart';
+import 'package:my_kantin/buttonN.dart';
+import 'package:my_kantin/requestBarang.dart';
 
 class Login extends StatefulWidget {
   @override
@@ -18,7 +21,7 @@ class _LoginState extends State<Login> {
   void proceslogin(context){
     var data = LoginController().login(namaController.text, pwController.text).then((value) {
       if (value) {
-        Navigator.pushReplacement(context, MaterialPageRoute(builder: (BuildContext context) => Dashboard()));
+        Navigator.pushReplacement(context, MaterialPageRoute(builder: (BuildContext context) =>HalPage(hal: 2,)));
       } else {
         showDialog(context: context, builder: ((BuildContext context){
           return AlertDialog(
