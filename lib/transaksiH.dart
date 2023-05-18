@@ -1,11 +1,26 @@
+// ignore_for_file: avoid_unnecessary_containers, prefer_const_constructors
+
 import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:my_kantin/apiService.dart';
+import 'package:my_kantin/models/hutang.dart';
 
 
-class transaksi extends StatelessWidget {
-  const transaksi({Key? key}) : super(key: key);
+class Transaksi extends StatefulWidget {
+  const Transaksi({Key? key}) : super(key: key);
 
+  @override
+  State<Transaksi> createState() => _TransaksiState();
+}
+
+class _TransaksiState extends State<Transaksi> {
+  late Future hutang;
+  @override
+  void initState() {
+  hutang =  ApiService.getHutang();
+    super.initState();
+  }
   @override
   Widget build(BuildContext context) {
     final myAppbar = AppBar(
@@ -66,10 +81,28 @@ class transaksi extends StatelessWidget {
                 color: Color(0xffF0EEEE).withOpacity(0.9),
                 borderRadius: BorderRadius.only(bottomLeft: Radius.circular(5),bottomRight: Radius.circular(5))
               ),
-              child: ListView.builder(
+              child: FutureBuilder(future: hutang,builder: (context,AsyncSnapshot snapshot){
+                if(snapshot.connectionState !=ConnectionState.done)
+                return CircularProgressIndicator();
+                 if(snapshot.hasError)
+                return Text("error");
+                 if(snapshot.hasData)
+                return _list(snapshot.data, width);
+                return Text("error");
+              },)
+            ),
+          )
+        ],
+      )
+    );
+  }
+}
+
+Widget _list(Hutang data,width){
+  return ListView.builder(
                 physics: const BouncingScrollPhysics(),
-                itemCount: 6,
-                itemBuilder: ((context, index) {
+                itemCount: data.data.length,
+                itemBuilder: ((context, i) {
                   return Center(
                     child: Container(
                       margin: EdgeInsets.only(top: 5,bottom: 8),
@@ -93,7 +126,7 @@ class transaksi extends StatelessWidget {
                               "Nama:",
                               style: TextStyle(color: Color(0xff00817f),fontWeight: FontWeight.bold),
                             ),
-                            Text(" Galih")
+                            Text(data.data[i].namaPenghutang)
                           ],
                         ),
                         subtitle: Row(
@@ -115,11 +148,5 @@ class transaksi extends StatelessWidget {
                       ),
                     ),
                   );
-              })),
-            ),
-          )
-        ],
-      )
-    );
-  }
+              }));
 }
