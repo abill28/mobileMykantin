@@ -20,7 +20,7 @@ class _HalPageState extends State<HalPage> {
     });
   }
 
-  List _screens = [requestBarang(),Dashboard(),Transaksi(),];
+  List _screens = [requestBarang(), Dashboard(), Transaksi(),];
 
   @override
   void initState() {

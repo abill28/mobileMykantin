@@ -126,14 +126,14 @@ class _LoginState extends State<Login> {
                     ),
                   ),
                     SizedBox(height: 20,),
-                  InkWell(
-                    onTap: (){
-                      Navigator.push(context,
-                      MaterialPageRoute(
-                        builder:(context)=> const ForgotPassword() ));
-                    },
-                    child: Text('Forgot Password?'),
-                  )
+                  // InkWell(
+                  //   onTap: (){
+                  //     Navigator.push(context,
+                  //     MaterialPageRoute(
+                  //       builder:(context)=> const ForgotPassword() ));
+                  //   },
+                  //   child: Text('Forgot Password?'),
+                  // )
                 ],
               ),
             ),
